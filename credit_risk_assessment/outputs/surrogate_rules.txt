@@ -1,0 +1,40 @@
+|--- checking_status_no_checking <= 0.50
+|   |--- duration_bin_Q1_low <= 0.50
+|   |   |--- employment_ord <= 3.50
+|   |   |   |--- savings_status_unknown_or_no_savings <= 0.50
+|   |   |   |   |--- class: 1
+|   |   |   |--- savings_status_unknown_or_no_savings >  0.50
+|   |   |   |   |--- class: 1
+|   |   |--- employment_ord >  3.50
+|   |   |   |--- checking_status_lt_0_DM <= 0.50
+|   |   |   |   |--- class: 1
+|   |   |   |--- checking_status_lt_0_DM >  0.50
+|   |   |   |   |--- class: 1
+|   |--- duration_bin_Q1_low >  0.50
+|   |   |--- credit_history_critical_or_other_bank <= 0.50
+|   |   |   |--- savings_status_lt_100_DM <= 0.50
+|   |   |   |   |--- class: 1
+|   |   |   |--- savings_status_lt_100_DM >  0.50
+|   |   |   |   |--- class: 1
+|   |   |--- credit_history_critical_or_other_bank >  0.50
+|   |   |   |--- property_magnitude_real_estate <= 0.50
+|   |   |   |   |--- class: 0
+|   |   |   |--- property_magnitude_real_estate >  0.50
+|   |   |   |   |--- class: 0
+|--- checking_status_no_checking >  0.50
+|   |--- other_installment_plans_none <= 0.50
+|   |   |--- employment_ord <= 2.50
+|   |   |   |--- class: 1
+|   |   |--- employment_ord >  2.50
+|   |   |   |--- class: 0
+|   |--- other_installment_plans_none >  0.50
+|   |   |--- employment_ord <= 1.50
+|   |   |   |--- residence_since <= 3.50
+|   |   |   |   |--- class: 1
+|   |   |   |--- residence_since >  3.50
+|   |   |   |   |--- class: 0
+|   |   |--- employment_ord >  1.50
+|   |   |   |--- credit_history_critical_or_other_bank <= 0.50
+|   |   |   |   |--- class: 0
+|   |   |   |--- credit_history_critical_or_other_bank >  0.50
+|   |   |   |   |--- class: 0

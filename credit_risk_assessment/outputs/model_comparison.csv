@@ -1,0 +1,5 @@
+model,oof_expected_cost,oof_roc_auc,oof_pr_auc,test_expected_cost,test_total_cost,test_roc_auc,test_pr_auc,test_f2_bad,test_recall_bad,test_specificity_good,test_precision_bad,test_accuracy,test_brier,threshold,fit_sec,cost_ci95_lo,cost_ci95_hi
+SVM,0.4838,0.7879,0.5937,0.465,93.0,0.8037,0.6226,0.7563,0.9,0.55,0.4615,0.655,0.1602,0.175,11.052,0.345,0.5901
+LogisticRegression,0.5,0.784,0.5803,0.545,109.0,0.7977,0.6344,0.7239,0.9,0.4357,0.406,0.575,0.2421,0.425,2.269,0.42,0.675
+GradientBoosting,0.5038,0.781,0.5964,0.6,120.0,0.7911,0.6532,0.7031,0.9,0.3571,0.375,0.52,0.236,0.345,40.819,0.485,0.735
+DecisionTree_Shallow,0.61,0.7049,0.4542,0.945,189.0,0.6602,0.4132,0.5046,0.55,0.6143,0.3793,0.595,0.3048,0.68,0.548,0.735,1.185

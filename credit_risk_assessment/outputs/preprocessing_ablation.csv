@@ -1,0 +1,7 @@
+feature_mode,model,oof_expected_cost,oof_roc_auc,test_expected_cost,test_roc_auc,test_pr_auc,test_recall_bad
+binned,LogisticRegression,0.4913,0.7764,0.5,0.7942,0.6267,0.9
+binned,SVM,0.5275,0.7642,0.5,0.8071,0.6775,0.95
+binned,GradientBoosting,0.5138,0.7721,0.55,0.7844,0.6265,0.9333
+continuous,LogisticRegression,0.5138,0.7738,0.51,0.7924,0.6054,0.8833
+continuous,SVM,0.5437,0.769,0.56,0.8154,0.6741,0.95
+continuous,GradientBoosting,0.52,0.7849,0.555,0.7887,0.6403,0.9667

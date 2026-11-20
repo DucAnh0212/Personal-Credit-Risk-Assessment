@@ -1,0 +1,219 @@
+{
+  "best_model_name": "SVM",
+  "bayes_optimal_threshold": 0.1667,
+  "best_params": {
+    "LogisticRegression": {
+      "model__C": 0.05,
+      "model__l1_ratio": 0.0
+    },
+    "SVM": {
+      "model__estimator__C": 0.5,
+      "model__estimator__gamma": 0.01,
+      "model__estimator__kernel": "rbf"
+    },
+    "GradientBoosting": {
+      "model__learning_rate": 0.03,
+      "model__max_depth": 3,
+      "model__min_samples_leaf": 10,
+      "model__n_estimators": 150,
+      "model__subsample": 0.8
+    },
+    "DecisionTree_Shallow": {
+      "model__max_depth": 4,
+      "model__min_samples_leaf": 25
+    }
+  },
+  "test_metrics": {
+    "LogisticRegression": {
+      "threshold": 0.425,
+      "expected_cost": 0.545,
+      "total_cost": 109.0,
+      "roc_auc": 0.7977,
+      "pr_auc": 0.6344,
+      "f2_bad": 0.7239,
+      "f1_bad": 0.5596,
+      "recall_bad": 0.9,
+      "specificity_good": 0.4357,
+      "precision_bad": 0.406,
+      "accuracy": 0.575,
+      "brier_score": 0.2421,
+      "tn": 61,
+      "fp": 79,
+      "fn": 6,
+      "tp": 54
+    },
+    "SVM": {
+      "threshold": 0.175,
+      "expected_cost": 0.465,
+      "total_cost": 93.0,
+      "roc_auc": 0.8037,
+      "pr_auc": 0.6226,
+      "f2_bad": 0.7563,
+      "f1_bad": 0.6102,
+      "recall_bad": 0.9,
+      "specificity_good": 0.55,
+      "precision_bad": 0.4615,
+      "accuracy": 0.655,
+      "brier_score": 0.1602,
+      "tn": 77,
+      "fp": 63,
+      "fn": 6,
+      "tp": 54
+    },
+    "GradientBoosting": {
+      "threshold": 0.345,
+      "expected_cost": 0.6,
+      "total_cost": 120.0,
+      "roc_auc": 0.7911,
+      "pr_auc": 0.6532,
+      "f2_bad": 0.7031,
+      "f1_bad": 0.5294,
+      "recall_bad": 0.9,
+      "specificity_good": 0.3571,
+      "precision_bad": 0.375,
+      "accuracy": 0.52,
+      "brier_score": 0.236,
+      "tn": 50,
+      "fp": 90,
+      "fn": 6,
+      "tp": 54
+    },
+    "DecisionTree_Shallow": {
+      "threshold": 0.68,
+      "expected_cost": 0.945,
+      "total_cost": 189.0,
+      "roc_auc": 0.6602,
+      "pr_auc": 0.4132,
+      "f2_bad": 0.5046,
+      "f1_bad": 0.449,
+      "recall_bad": 0.55,
+      "specificity_good": 0.6143,
+      "precision_bad": 0.3793,
+      "accuracy": 0.595,
+      "brier_score": 0.3048,
+      "tn": 86,
+      "fp": 54,
+      "fn": 27,
+      "tp": 33
+    }
+  },
+  "test_ci95": {
+    "LogisticRegression": {
+      "expected_cost_ci95": [
+        0.42,
+        0.675
+      ],
+      "roc_auc_ci95": [
+        0.7309,
+        0.8638
+      ],
+      "pr_auc_ci95": [
+        0.5157,
+        0.7583
+      ],
+      "recall_bad_ci95": [
+        0.8214,
+        0.9678
+      ]
+    },
+    "SVM": {
+      "expected_cost_ci95": [
+        0.345,
+        0.5901
+      ],
+      "roc_auc_ci95": [
+        0.7417,
+        0.8647
+      ],
+      "pr_auc_ci95": [
+        0.5011,
+        0.754
+      ],
+      "recall_bad_ci95": [
+        0.8214,
+        0.9678
+      ]
+    },
+    "GradientBoosting": {
+      "expected_cost_ci95": [
+        0.485,
+        0.735
+      ],
+      "roc_auc_ci95": [
+        0.7231,
+        0.8601
+      ],
+      "pr_auc_ci95": [
+        0.5279,
+        0.7701
+      ],
+      "recall_bad_ci95": [
+        0.8182,
+        0.9667
+      ]
+    },
+    "DecisionTree_Shallow": {
+      "expected_cost_ci95": [
+        0.735,
+        1.185
+      ],
+      "roc_auc_ci95": [
+        0.5778,
+        0.7349
+      ],
+      "pr_auc_ci95": [
+        0.3099,
+        0.5241
+      ],
+      "recall_bad_ci95": [
+        0.421,
+        0.6721
+      ]
+    }
+  },
+  "surrogate_fidelity": 0.8638,
+  "audit_highlights": {
+    "n_rows": 1000,
+    "explicit_missing": 0,
+    "duplicate_full_rows": 0,
+    "dead_doc_codes": {
+      "purpose": [
+        "A47"
+      ],
+      "personal_status_sex": [
+        "A95"
+      ]
+    },
+    "contradictions": {
+      "age_lt_25_with_employment_ge_7yr": 9,
+      "unemployed_A71_with_high_skill_job_A174": 33,
+      "own_housing_A152_with_no_property_A124": 32,
+      "rent_housing_A151_with_real_estate_A121": 55,
+      "credit_hist_A30_with_existing_credits_ge_2": 27
+    },
+    "implicit_unknowns": {
+      "checking_A14_no_checking": {
+        "count": 394,
+        "bad_rate": 0.1168
+      },
+      "savings_A65_unknown_or_none": {
+        "count": 183,
+        "bad_rate": 0.1749
+      },
+      "property_A124_unknown_or_none": {
+        "count": 154,
+        "bad_rate": 0.4351
+      }
+    },
+    "numeric_file_diff": {
+      "n_rows_numeric": 1000,
+      "target_mismatches": 0,
+      "credit_amount_unique_raw": 921,
+      "credit_amount_unique_numeric": 125,
+      "credit_amount_round100_exact_matches": 1000,
+      "purpose_A40_flag_matches": 1000,
+      "purpose_A41_flag_matches": 1000,
+      "installment_rate_present_in_numeric": false
+    }
+  }
+}
