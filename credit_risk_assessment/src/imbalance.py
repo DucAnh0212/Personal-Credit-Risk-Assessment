@@ -1,5 +1,3 @@
-"""Class imbalance handling: Cost-Sensitive Class Weighting (5:1 / balanced) and SMOTE-NC."""
-
 import numpy as np
 import pandas as pd
 from imblearn.over_sampling import SMOTENC
@@ -27,23 +25,18 @@ CLASS_WEIGHT_MAP = {
     "none": None,
 }
 
-
 def resolve_class_weight(mode: str):
-    """Map named imbalance weighting strategy to sklearn class_weight value."""
     if mode not in CLASS_WEIGHT_MAP:
         raise ValueError(f"Unknown class_weight mode '{mode}'. Choose from {list(CLASS_WEIGHT_MAP)}")
     return CLASS_WEIGHT_MAP[mode]
 
 
 def sample_weights_from_class_weight(y: np.ndarray, class_weight) -> np.ndarray | None:
-    """Convert class_weight dict or 'balanced' into per-sample weights for estimators like GBDT."""
     if class_weight is None:
         return None
     return compute_sample_weight(class_weight=class_weight, y=np.asarray(y))
 
-
 class ColumnSelector(BaseEstimator, TransformerMixin):
-    """Select exact numeric and categorical columns with strict dtypes before SMOTENC."""
 
     def __init__(self, num_cols: list[str], cat_cols: list[str]):
         self.num_cols = num_cols
@@ -67,11 +60,6 @@ def build_smotenc_pipeline(
     sampling_strategy: float | str = "auto",
     random_state: int = RANDOM_STATE,
 ) -> ImbPipeline:
-    """Build leakage-free SMOTE-NC pipeline applying resampling ONLY inside training folds.
-
-    SMOTE-NC runs on mixed numeric + categorical columns BEFORE One-Hot encoding so
-    categorical bins and flags remain valid discrete categories (never fractional 0.37 values).
-    """
     ohe = OneHotEncoder(handle_unknown="ignore", sparse_output=False)
 
     if mode == "binned":

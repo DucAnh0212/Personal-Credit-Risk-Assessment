@@ -1,5 +1,3 @@
-"""Reproducible CLI entry point: audit -> clean -> CV benchmark -> interpretability -> outputs."""
-
 import json
 import matplotlib
 

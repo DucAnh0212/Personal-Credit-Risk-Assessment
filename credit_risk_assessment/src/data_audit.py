@@ -1,5 +1,3 @@
-"""Read-only loading and comprehensive data quality audit for Statlog German Credit."""
-
 from pathlib import Path
 import numpy as np
 import pandas as pd
@@ -17,17 +15,12 @@ from src.config import (
 
 
 def load_raw_german_data(path: Path = GERMAN_DATA_PATH) -> pd.DataFrame:
-    """Load original german.data without mutating any source files.
-
-    Encodes `bad_risk` = 1 when raw_target == 2 (Bad), 0 when raw_target == 1 (Good).
-    """
     df = pd.read_csv(path, sep=r"\s+", header=None, names=COLUMN_NAMES, engine="python")
     df["bad_risk"] = (df["raw_target"] == 2).astype(int)
     return df
 
 
 def load_raw_german_numeric(path: Path = GERMAN_NUMERIC_PATH) -> pd.DataFrame:
-    """Load Strathclyde german.data-numeric solely for schema/loss comparison."""
     cols = [f"num_col_{i}" for i in range(1, 25)] + ["raw_target"]
     df = pd.read_csv(path, sep=r"\s+", header=None, names=cols, engine="python")
     df["bad_risk"] = (df["raw_target"] == 2).astype(int)
@@ -40,7 +33,6 @@ def compute_information_value(
     target: str = "bad_risk",
     n_bins: int = 5,
 ) -> float:
-    """Compute Laplace-smoothed Information Value (IV) for a single feature."""
     series = df[feature]
     if feature in CONTINUOUS_COLS:
         binned = pd.qcut(series, q=n_bins, duplicates="drop")
@@ -62,7 +54,6 @@ def audit_data_quality(
     df_raw: pd.DataFrame,
     df_num: pd.DataFrame | None = None,
 ) -> dict:
-    """Audit dataset across the 6 data quality dimensions from Data.pptx (Slide 62)."""
     feature_cols = [c for c in COLUMN_NAMES if c != "raw_target"]
 
     # 1. Completeness & duplicates

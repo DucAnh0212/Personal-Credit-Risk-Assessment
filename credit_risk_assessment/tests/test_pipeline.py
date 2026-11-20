@@ -1,5 +1,3 @@
-"""Automated verification tests for data audit, leakage-free cleaning, metrics, and models."""
-
 import numpy as np
 import pandas as pd
 

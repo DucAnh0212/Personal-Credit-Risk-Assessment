@@ -1,5 +1,3 @@
-"""Interpretability Models: Standalone shallow Decision Tree and Global Surrogate Tree."""
-
 import numpy as np
 import pandas as pd
 from sklearn.metrics import accuracy_score
@@ -18,7 +16,6 @@ def build_decision_tree(
     class_weight_mode: str = "cost_5_1",
     random_state: int = RANDOM_STATE,
 ) -> DecisionTreeClassifier:
-    """Create shallow interpretable Decision Tree (entropy aligns with Information Gain slides)."""
     return DecisionTreeClassifier(
         criterion=criterion,
         max_depth=max_depth,
@@ -35,7 +32,6 @@ def build_decision_tree_pipeline(
     max_depth: int = 4,
     min_samples_leaf: int = 20,
 ) -> Pipeline:
-    """Combine unscaled readable preprocessor with shallow Decision Tree."""
     return Pipeline(
         steps=[
             ("preprocess", build_preprocessor(mode=feature_mode, scale_numeric=False)),
@@ -57,7 +53,6 @@ def summarize_tree_leaves(
     X_encoded: np.ndarray,
     y_actual: np.ndarray,
 ) -> pd.DataFrame:
-    """Summarize each decision tree leaf with sample count, coverage, predicted label, and Bad rate."""
     leaf_ids = tree_clf.apply(X_encoded)
     preds = tree_clf.predict(X_encoded)
     n_total = len(y_actual)
@@ -82,7 +77,6 @@ def extract_standalone_tree_summary(
     X_raw: pd.DataFrame,
     y_actual: np.ndarray,
 ) -> dict:
-    """Extract IF-THEN text rules and leaf coverage/bad-rate summary from standalone Decision Tree."""
     prep = dt_pipeline.named_steps["preprocess"]
     dt_clf = dt_pipeline.named_steps["model"]
     X_enc = prep.transform(X_raw)
@@ -105,11 +99,6 @@ def fit_global_surrogate_tree(
     min_samples_leaf: int = 20,
     ccp_alpha: float = 0.005,
 ) -> dict:
-    """Fit a shallow pruned Surrogate Tree imitating the best model's risk decisions.
-
-    Uses an unscaled readable binned representation so split thresholds read directly as
-    business rules (e.g., `checking_status_no_checking <= 0.50`).
-    """
     teacher_probs = teacher_pipeline.predict_proba(X_raw)[:, 1]
     teacher_preds = (teacher_probs >= teacher_threshold).astype(int)
 

@@ -1,5 +1,3 @@
-"""Model interpretability (Feature Importance + Decision Trees) and publication-ready charts."""
-
 from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
@@ -27,7 +25,6 @@ PALETTE = {
     "DecisionTree_Shallow": "#9467bd",
 }
 
-
 def compute_permutation_importance_raw(
     fitted_pipeline,
     X_eval: pd.DataFrame,
@@ -35,7 +32,6 @@ def compute_permutation_importance_raw(
     n_repeats: int = 20,
     random_state: int = RANDOM_STATE,
 ) -> pd.DataFrame:
-    """Compute model-agnostic permutation importance aggregated cleanly at the 20 raw feature level."""
     perm = permutation_importance(
         fitted_pipeline,
         X_eval,
@@ -54,9 +50,7 @@ def compute_permutation_importance_raw(
     )
     return df.sort_values("perm_roc_auc_drop", ascending=False).reset_index(drop=True)
 
-
 def plot_eda_overview(df_raw: pd.DataFrame, audit: dict, save_path: Path | None = None):
-    """Plot 2x2 EDA overview: target split, checking/history bad rates, skewed amount, and top IV."""
     fig, axes = plt.subplots(2, 2, figsize=(15, 11))
 
     # 1. Target imbalance & 5:1 cost weight illustration
@@ -155,7 +149,6 @@ def plot_eda_overview(df_raw: pd.DataFrame, audit: dict, save_path: Path | None 
 
 
 def plot_model_comparison(results_dict: dict, y_test: np.ndarray, save_path: Path | None = None):
-    """Plot 2x2 benchmark: ROC curves, PR curves, Expected Cost vs threshold, and Calibration."""
     fig, axes = plt.subplots(2, 2, figsize=(15, 11))
 
     # 1. ROC Curves
@@ -244,7 +237,6 @@ def plot_model_comparison(results_dict: dict, y_test: np.ndarray, save_path: Pat
 
 
 def plot_confusion_matrices(results_dict: dict, y_test: np.ndarray, save_path: Path | None = None):
-    """Plot side-by-side confusion matrices annotated with total 5:1 cost."""
     n = len(results_dict)
     fig, axes = plt.subplots(1, n, figsize=(4.5 * n, 4.3))
     if n == 1:
@@ -273,7 +265,6 @@ def plot_feature_importance(
     gbdt_gain_df: pd.DataFrame,
     save_path: Path | None = None,
 ):
-    """Plot 1x3 interpretability chart: LR Odds Ratios, Raw Permutation Importance, and GBDT Gain."""
     fig, axes = plt.subplots(1, 3, figsize=(20, 7))
 
     # 1. Logistic Regression top log-odds (signed direction!)
@@ -331,7 +322,6 @@ def plot_decision_trees(
     best_model_name: str,
     save_path: Path | None = None,
 ):
-    """Visualize both Standalone shallow Decision Tree and Global Surrogate Tree."""
     fig, axes = plt.subplots(2, 1, figsize=(20, 14))
 
     dt_names = get_feature_names(standalone_dt_pipeline.named_steps["preprocess"])

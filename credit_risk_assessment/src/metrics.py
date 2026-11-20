@@ -1,5 +1,3 @@
-"""Pure-math credit risk cost metrics, Bayes threshold, bootstrap CIs, and fairness slices."""
-
 import numpy as np
 import pandas as pd
 from sklearn.metrics import (
@@ -13,9 +11,7 @@ from sklearn.metrics import (
     recall_score,
     roc_auc_score,
 )
-
 from src.config import BAYES_OPTIMAL_THRESHOLD, COST_FN, COST_FP, RANDOM_STATE
-
 
 def total_cost(
     y_true: np.ndarray,
@@ -23,7 +19,6 @@ def total_cost(
     cost_fn: float = COST_FN,
     cost_fp: float = COST_FP,
 ) -> float:
-    """Compute total German Credit misclassification cost: 5*FN + 1*FP."""
     tn, fp, fn, tp = confusion_matrix(y_true, y_pred, labels=[0, 1]).ravel()
     return float(cost_fn * fn + cost_fp * fp)
 
@@ -34,7 +29,6 @@ def expected_cost(
     cost_fn: float = COST_FN,
     cost_fp: float = COST_FP,
 ) -> float:
-    """Compute mean misclassification cost per applicant: (5*FN + 1*FP) / N."""
     return total_cost(y_true, y_pred, cost_fn=cost_fn, cost_fp=cost_fp) / len(y_true)
 
 
@@ -42,7 +36,6 @@ def bayes_optimal_threshold(
     cost_fn: float = COST_FN,
     cost_fp: float = COST_FP,
 ) -> float:
-    """Theoretical Bayes decision threshold for calibrated probabilities: C_FP / (C_FP + C_FN)."""
     return float(cost_fp / (cost_fp + cost_fn))
 
 
@@ -53,7 +46,6 @@ def find_optimal_threshold(
     cost_fp: float = COST_FP,
     grid_size: int = 181,
 ) -> tuple[float, float]:
-    """Grid-search probability threshold on validation/OOF predictions to minimize expected cost."""
     thresholds = np.linspace(0.05, 0.95, grid_size)
     best_t = BAYES_OPTIMAL_THRESHOLD
     best_cost = float("inf")
@@ -79,7 +71,6 @@ def compute_classification_metrics(
     cost_fn: float = COST_FN,
     cost_fp: float = COST_FP,
 ) -> dict:
-    """Compute complete classification and credit-cost metrics for Bad=1, Good=0."""
     y_true_arr = np.asarray(y_true).astype(int)
     y_prob_arr = np.asarray(y_prob).astype(float)
     y_pred = (y_prob_arr >= threshold).astype(int)
@@ -108,7 +99,6 @@ def compute_classification_metrics(
 
 
 def naive_baselines(y_true: np.ndarray) -> pd.DataFrame:
-    """Compute trivial all-Good and all-Bad baselines under the 5:1 cost matrix."""
     y_arr = np.asarray(y_true).astype(int)
     all_good = np.zeros_like(y_arr)
     all_bad = np.ones_like(y_arr)
@@ -137,7 +127,6 @@ def bootstrap_metric_ci(
     n_boot: int = 1000,
     seed: int = RANDOM_STATE,
 ) -> dict:
-    """Compute 95% percentile bootstrap confidence intervals for key evaluation metrics."""
     rng = np.random.default_rng(seed)
     y_true_arr = np.asarray(y_true).astype(int)
     y_prob_arr = np.asarray(y_prob).astype(float)
@@ -174,7 +163,6 @@ def slice_error_analysis(
     y_prob: np.ndarray,
     threshold: float,
 ) -> pd.DataFrame:
-    """Slice-based error and fairness evaluation across protected and financial groups."""
     work = df_raw.copy().reset_index(drop=True)
     work["y_true"] = np.asarray(y_true).astype(int)
     work["y_prob"] = np.asarray(y_prob).astype(float)

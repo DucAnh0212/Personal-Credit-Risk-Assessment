@@ -1,5 +1,3 @@
-"""Unified Stratified CV tuning, out-of-fold threshold calibration, and ablation benchmark."""
-
 import time
 import numpy as np
 import pandas as pd
@@ -28,7 +26,6 @@ from src.models.svm_model import build_svm, build_svm_pipeline, get_svm_param_gr
 
 
 def split_train_test(df_raw: pd.DataFrame):
-    """Create fixed stratified 80/20 train-dev vs untouched test split before any fitting."""
     feature_cols = [c for c in COLUMN_NAMES if c != "raw_target"]
     X = df_raw[feature_cols].copy()
     y = df_raw["bad_risk"].to_numpy().astype(int)
@@ -48,7 +45,6 @@ def tune_and_evaluate_model(
     fixed_threshold: float | None = None,
     n_splits: int = N_SPLITS,
 ) -> dict:
-    """Tune on train via Stratified CV, pick threshold on OOF probs only, evaluate once on test."""
     cv = StratifiedKFold(n_splits=n_splits, shuffle=True, random_state=RANDOM_STATE)
     t0 = time.perf_counter()
 
@@ -109,7 +105,6 @@ def tune_and_evaluate_model(
 
 
 def run_primary_model_comparison(df_raw: pd.DataFrame) -> dict:
-    """Train, tune, and compare LR, SVM, Gradient Boosting, and standalone shallow Decision Tree."""
     X_train, X_test, y_train, y_test = split_train_test(df_raw)
 
     models_spec = [
@@ -199,7 +194,6 @@ def run_imbalance_ablation(
     X_test: pd.DataFrame,
     y_test: np.ndarray,
 ) -> pd.DataFrame:
-    """Compare Class Weighting (5:1 & balanced), Bayes Threshold (1/6), and in-fold SMOTE-NC."""
     configs = [
         (
             "LR | ClassWeight_5_1 + OOF_t",
@@ -287,7 +281,6 @@ def run_preprocessing_ablation(
     X_test: pd.DataFrame,
     y_test: np.ndarray,
 ) -> pd.DataFrame:
-    """Compare Discretized/Binned features (Primary) vs Clipped+Log Continuous features across LR, SVM, GBDT."""
     rows = []
     for mode in ["binned", "continuous"]:
         specs = [

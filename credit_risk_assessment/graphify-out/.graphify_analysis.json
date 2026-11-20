@@ -1,0 +1,375 @@
+{
+  "communities": {
+    "0": [
+      "logisticregression",
+      "sklearn_ensemble",
+      "sklearn_model_selection",
+      "src_evaluate",
+      "src_evaluate_py_dataframe",
+      "src_evaluate_py_ndarray",
+      "src_evaluate_rationale_110",
+      "src_evaluate_rationale_200",
+      "src_evaluate_rationale_288",
+      "src_evaluate_rationale_29",
+      "src_evaluate_rationale_49",
+      "src_evaluate_run_imbalance_ablation",
+      "src_evaluate_run_preprocessing_ablation",
+      "src_evaluate_run_primary_model_comparison",
+      "src_evaluate_split_train_test",
+      "src_evaluate_tune_and_evaluate_model",
+      "src_models_decision_tree_build_decision_tree_pipeline",
+      "src_models_decision_tree_rationale_38",
+      "src_models_gradient_boosting",
+      "src_models_gradient_boosting_build_gbdt_pipeline",
+      "src_models_gradient_boosting_build_gradient_boosting",
+      "src_models_gradient_boosting_extract_gbdt_gain_importance",
+      "src_models_gradient_boosting_get_gbdt_param_grid",
+      "src_models_gradient_boosting_py_dataframe",
+      "src_models_gradient_boosting_py_pipeline",
+      "src_models_gradient_boosting_rationale_102",
+      "src_models_gradient_boosting_rationale_50",
+      "src_models_gradient_boosting_rationale_71",
+      "src_models_gradient_boosting_rationale_91",
+      "src_models_logistic_regression_build_logistic_pipeline",
+      "src_models_logistic_regression_build_logistic_regression",
+      "src_models_logistic_regression_get_logistic_param_grid",
+      "src_models_logistic_regression_rationale_18",
+      "src_models_logistic_regression_rationale_35",
+      "src_models_logistic_regression_rationale_52",
+      "src_models_svm_model_build_svm_pipeline",
+      "src_models_svm_model_get_svm_param_grid",
+      "src_models_svm_model_py_pipeline",
+      "src_models_svm_model_rationale_35",
+      "src_models_svm_model_rationale_53",
+      "tests_test_pipeline_test_all_models_smotenc_and_interpretability_end_to_end",
+      "time"
+    ],
+    "1": [
+      "imbpipeline",
+      "src_clean_data_build_preprocessor",
+      "src_clean_data_clean_static_rules",
+      "src_clean_data_percentilecliplogtransformer",
+      "src_clean_data_percentilecliplogtransformer_fit",
+      "src_clean_data_percentilecliplogtransformer_get_feature_names_out",
+      "src_clean_data_percentilecliplogtransformer_init",
+      "src_clean_data_percentilecliplogtransformer_transform",
+      "src_clean_data_py_baseestimator",
+      "src_clean_data_py_dataframe",
+      "src_clean_data_py_transformermixin",
+      "src_clean_data_quantilefeaturebinner",
+      "src_clean_data_quantilefeaturebinner_fit",
+      "src_clean_data_quantilefeaturebinner_init",
+      "src_clean_data_quantilefeaturebinner_transform",
+      "src_clean_data_rationale_104",
+      "src_clean_data_rationale_114",
+      "src_clean_data_rationale_150",
+      "src_clean_data_rationale_198",
+      "src_clean_data_rationale_45",
+      "src_clean_data_staticrulecleaner",
+      "src_clean_data_staticrulecleaner_fit",
+      "src_clean_data_staticrulecleaner_transform",
+      "src_imbalance_build_smotenc_pipeline",
+      "src_imbalance_rationale_70",
+      "tests_test_pipeline_test_cleaning_preserves_rows_and_prevents_leakage"
+    ],
+    "2": [
+      "json",
+      "matplotlib",
+      "matplotlib_pyplot",
+      "run_all",
+      "run_all_main",
+      "seaborn",
+      "sklearn_inspection",
+      "src_interpret",
+      "src_interpret_compute_permutation_importance_raw",
+      "src_interpret_plot_confusion_matrices",
+      "src_interpret_plot_decision_trees",
+      "src_interpret_plot_eda_overview",
+      "src_interpret_plot_feature_importance",
+      "src_interpret_plot_model_comparison",
+      "src_interpret_py_dataframe",
+      "src_interpret_py_ndarray",
+      "src_interpret_py_path",
+      "src_interpret_rationale_1",
+      "src_interpret_rationale_158",
+      "src_interpret_rationale_247",
+      "src_interpret_rationale_276",
+      "src_interpret_rationale_334",
+      "src_interpret_rationale_38",
+      "src_interpret_rationale_59"
+    ],
+    "3": [
+      "numpy",
+      "src_metrics",
+      "src_metrics_bayes_optimal_threshold",
+      "src_metrics_bootstrap_metric_ci",
+      "src_metrics_bootstrap_metric_ci_ci",
+      "src_metrics_compute_classification_metrics",
+      "src_metrics_expected_cost",
+      "src_metrics_find_optimal_threshold",
+      "src_metrics_naive_baselines",
+      "src_metrics_py_dataframe",
+      "src_metrics_py_ndarray",
+      "src_metrics_rationale_1",
+      "src_metrics_rationale_111",
+      "src_metrics_rationale_140",
+      "src_metrics_rationale_177",
+      "src_metrics_rationale_26",
+      "src_metrics_rationale_37",
+      "src_metrics_rationale_45",
+      "src_metrics_rationale_56",
+      "src_metrics_rationale_82",
+      "src_metrics_slice_error_analysis",
+      "src_metrics_total_cost",
+      "tests_test_pipeline_test_pure_math_cost_and_bayes_threshold"
+    ],
+    "4": [
+      "calibratedclassifiercv",
+      "imblearn_over_sampling",
+      "imblearn_pipeline",
+      "pathlib",
+      "sklearn_base",
+      "sklearn_calibration",
+      "sklearn_compose",
+      "sklearn_linear_model",
+      "sklearn_pipeline",
+      "sklearn_preprocessing",
+      "sklearn_svm",
+      "sklearn_utils_class_weight",
+      "src_clean_data",
+      "src_config",
+      "src_imbalance",
+      "src_imbalance_rationale_1",
+      "src_imbalance_rationale_32",
+      "src_imbalance_resolve_class_weight",
+      "src_models_logistic_regression",
+      "src_models_svm_model",
+      "src_models_svm_model_build_svm",
+      "src_models_svm_model_rationale_17"
+    ],
+    "5": [
+      "pandas",
+      "scipy_stats",
+      "src_data_audit",
+      "src_data_audit_audit_data_quality",
+      "src_data_audit_compute_information_value",
+      "src_data_audit_load_raw_german_data",
+      "src_data_audit_load_raw_german_numeric",
+      "src_data_audit_py_dataframe",
+      "src_data_audit_py_path",
+      "src_data_audit_rationale_18",
+      "src_data_audit_rationale_28",
+      "src_data_audit_rationale_41",
+      "src_data_audit_rationale_63",
+      "src_models_logistic_regression_extract_odds_ratios",
+      "src_models_logistic_regression_py_dataframe",
+      "src_models_logistic_regression_py_pipeline",
+      "src_models_logistic_regression_rationale_60",
+      "tests_test_pipeline",
+      "tests_test_pipeline_test_plotting_functions_render_without_error",
+      "tests_test_pipeline_test_raw_data_audit_integrity"
+    ],
+    "6": [
+      "decisiontreeclassifier",
+      "sklearn_metrics",
+      "sklearn_tree",
+      "src_clean_data_get_feature_names",
+      "src_clean_data_py_pipeline",
+      "src_clean_data_rationale_263",
+      "src_models_decision_tree",
+      "src_models_decision_tree_build_decision_tree",
+      "src_models_decision_tree_extract_standalone_tree_summary",
+      "src_models_decision_tree_fit_global_surrogate_tree",
+      "src_models_decision_tree_py_dataframe",
+      "src_models_decision_tree_py_ndarray",
+      "src_models_decision_tree_py_pipeline",
+      "src_models_decision_tree_rationale_1",
+      "src_models_decision_tree_rationale_108",
+      "src_models_decision_tree_rationale_21",
+      "src_models_decision_tree_rationale_60",
+      "src_models_decision_tree_rationale_85",
+      "src_models_decision_tree_summarize_tree_leaves"
+    ],
+    "7": [
+      "src_imbalance_columnselector",
+      "src_imbalance_columnselector_fit",
+      "src_imbalance_columnselector_init",
+      "src_imbalance_columnselector_transform",
+      "src_imbalance_py_baseestimator",
+      "src_imbalance_py_dataframe",
+      "src_imbalance_py_transformermixin",
+      "src_imbalance_rationale_46"
+    ],
+    "8": [
+      "gradientboostingclassifier",
+      "src_imbalance_py_ndarray",
+      "src_imbalance_rationale_39",
+      "src_imbalance_sample_weights_from_class_weight",
+      "src_models_gradient_boosting_costweightedgradientboosting",
+      "src_models_gradient_boosting_costweightedgradientboosting_fit",
+      "src_models_gradient_boosting_costweightedgradientboosting_init"
+    ],
+    "9": [
+      "src_init",
+      "src_init_rationale_1"
+    ],
+    "10": [
+      "src_models_init",
+      "src_models_init_rationale_1"
+    ]
+  },
+  "cohesion": {
+    "0": 0.09059233449477352,
+    "1": 0.13538461538461538,
+    "2": 0.18840579710144928,
+    "3": 0.17786561264822134,
+    "4": 0.1471861471861472,
+    "5": 0.2,
+    "6": 0.16374269005847952,
+    "7": 0.2857142857142857,
+    "8": 0.2857142857142857,
+    "9": 1.0,
+    "10": 1.0
+  },
+  "gods": [
+    {
+      "id": "run_all_main",
+      "label": "main()",
+      "degree": 19
+    },
+    {
+      "id": "src_clean_data_build_preprocessor",
+      "label": "build_preprocessor()",
+      "degree": 17
+    },
+    {
+      "id": "src_evaluate_run_primary_model_comparison",
+      "label": "run_primary_model_comparison()",
+      "degree": 16
+    },
+    {
+      "id": "src_clean_data_get_feature_names",
+      "label": "get_feature_names()",
+      "degree": 14
+    },
+    {
+      "id": "src_clean_data_percentilecliplogtransformer",
+      "label": "PercentileClipLogTransformer",
+      "degree": 13
+    },
+    {
+      "id": "src_evaluate_run_imbalance_ablation",
+      "label": "run_imbalance_ablation()",
+      "degree": 13
+    },
+    {
+      "id": "tests_test_pipeline_test_all_models_smotenc_and_interpretability_end_to_end",
+      "label": "test_all_models_smotenc_and_interpretability_end_to_end()",
+      "degree": 13
+    },
+    {
+      "id": "tests_test_pipeline_test_cleaning_preserves_rows_and_prevents_leakage",
+      "label": "test_cleaning_preserves_rows_and_prevents_leakage()",
+      "degree": 13
+    },
+    {
+      "id": "src_metrics_expected_cost",
+      "label": "expected_cost()",
+      "degree": 13
+    },
+    {
+      "id": "src_clean_data_quantilefeaturebinner",
+      "label": "QuantileFeatureBinner",
+      "degree": 12
+    }
+  ],
+  "surprises": [
+    {
+      "source": "main()",
+      "target": "run_imbalance_ablation()",
+      "source_files": [
+        "run_all.py",
+        "src/evaluate.py"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "main()",
+      "target": "run_preprocessing_ablation()",
+      "source_files": [
+        "run_all.py",
+        "src/evaluate.py"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "main()",
+      "target": "extract_gbdt_gain_importance()",
+      "source_files": [
+        "run_all.py",
+        "src/models/gradient_boosting.py"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "main()",
+      "target": "slice_error_analysis()",
+      "source_files": [
+        "run_all.py",
+        "src/metrics.py"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "main()",
+      "target": "load_raw_german_data()",
+      "source_files": [
+        "run_all.py",
+        "src/data_audit.py"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories; bridges separate communities"
+    }
+  ],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `ColumnSelector` connect `ColumnSelector` to `build_preprocessor`, `imbalance.py`?",
+      "why": "High betweenness centrality (0.069) - this node is a cross-community bridge."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `evaluate.py` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.09059233449477352 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `build_smotenc_pipeline()` connect `build_preprocessor` to `evaluate.py`, `imbalance.py`, `test_pipeline.py`, `ColumnSelector`?",
+      "why": "High betweenness centrality (0.053) - this node is a cross-community bridge."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `build_preprocessor` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.13538461538461538 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `PercentileClipLogTransformer` connect `build_preprocessor` to `imbalance.py`, `test_pipeline.py`?",
+      "why": "High betweenness centrality (0.047) - this node is a cross-community bridge."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `imbalance.py` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.1471861471861472 - nodes in this community are weakly interconnected."
+    }
+  ]
+}

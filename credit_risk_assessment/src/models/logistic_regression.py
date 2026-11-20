@@ -1,5 +1,3 @@
-"""Model 1: Logistic Regression with L1/L2 regularization, cost weighting, and Odds Ratios."""
-
 import numpy as np
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
@@ -17,7 +15,6 @@ def build_logistic_regression(
     max_iter: int = 1000,
     random_state: int = RANDOM_STATE,
 ) -> LogisticRegression:
-    """Create configured LogisticRegression (l1_ratio=0.0 => L2, l1_ratio=1.0 => L1)."""
     return LogisticRegression(
         C=C,
         l1_ratio=l1_ratio,
@@ -34,7 +31,6 @@ def build_logistic_pipeline(
     C: float = 0.5,
     l1_ratio: float = 0.0,
 ) -> Pipeline:
-    """Combine leakage-free preprocessor with Logistic Regression."""
     return Pipeline(
         steps=[
             ("preprocess", build_preprocessor(mode=feature_mode, scale_numeric=True)),
@@ -51,7 +47,6 @@ def build_logistic_pipeline(
 
 
 def get_logistic_param_grid() -> dict:
-    """Hyperparameter search space for Logistic Regression (L2 and L1 regularization)."""
     return {
         "model__C": [0.05, 0.1, 0.25, 0.5, 1.0, 2.0, 5.0],
         "model__l1_ratio": [0.0, 1.0],
@@ -59,7 +54,6 @@ def get_logistic_param_grid() -> dict:
 
 
 def extract_odds_ratios(fitted_pipeline: Pipeline) -> pd.DataFrame:
-    """Extract standardized log-odds coefficients and Odds Ratios = exp(beta)."""
     names = get_feature_names(fitted_pipeline.named_steps["preprocess"])
     coefs = fitted_pipeline.named_steps["model"].coef_.ravel()
     df = pd.DataFrame(

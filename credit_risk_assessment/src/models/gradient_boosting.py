@@ -1,5 +1,3 @@
-"""Model 3: Cost-Weighted Gradient Boosting with shallow-tree regularization for N=1000."""
-
 import numpy as np
 import pandas as pd
 from sklearn.ensemble import GradientBoostingClassifier
@@ -11,8 +9,6 @@ from src.imbalance import resolve_class_weight, sample_weights_from_class_weight
 
 
 class CostWeightedGradientBoosting(GradientBoostingClassifier):
-    """GradientBoostingClassifier accepting `class_weight` cleanly inside CV Pipelines."""
-
     def __init__(
         self,
         *,
@@ -51,7 +47,6 @@ def build_gradient_boosting(
     class_weight_mode: str = "cost_5_1",
     random_state: int = RANDOM_STATE,
 ) -> CostWeightedGradientBoosting:
-    """Create regularized shallow Gradient Boosting estimator tailored for N=1000."""
     return CostWeightedGradientBoosting(
         learning_rate=learning_rate,
         n_estimators=n_estimators,
@@ -72,7 +67,6 @@ def build_gbdt_pipeline(
     subsample: float = 0.8,
     min_samples_leaf: int = 15,
 ) -> Pipeline:
-    """Combine preprocessing pipeline with Cost-Weighted Gradient Boosting."""
     return Pipeline(
         steps=[
             ("preprocess", build_preprocessor(mode=feature_mode, scale_numeric=False)),
@@ -92,7 +86,6 @@ def build_gbdt_pipeline(
 
 
 def get_gbdt_param_grid() -> dict:
-    """Conservative hyperparameter grid to prevent overfitting on 1,000 samples."""
     return {
         "model__n_estimators": [60, 100, 150],
         "model__learning_rate": [0.03, 0.05, 0.1],
@@ -103,7 +96,6 @@ def get_gbdt_param_grid() -> dict:
 
 
 def extract_gbdt_gain_importance(fitted_pipeline: Pipeline) -> pd.DataFrame:
-    """Extract impurity/gain-based feature importance from a fitted GBDT pipeline."""
     names = get_feature_names(fitted_pipeline.named_steps["preprocess"])
     importances = fitted_pipeline.named_steps["model"].feature_importances_
     df = pd.DataFrame(

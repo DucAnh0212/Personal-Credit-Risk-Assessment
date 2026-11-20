@@ -1,5 +1,3 @@
-"""Leakage-free data cleaning, noise flagging, feature construction, and discretization."""
-
 import numpy as np
 import pandas as pd
 from sklearn.base import BaseEstimator, TransformerMixin
@@ -44,16 +42,6 @@ BINNED_CAT_COLS = ["age_bin", "credit_amount_bin", "duration_bin", "monthly_burd
 
 
 def clean_static_rules(df: pd.DataFrame) -> pd.DataFrame:
-    """Apply deterministic, row-preserving semantic cleaning without using label or test stats.
-
-    - Preserves all 1,000 rows (never drops outliers or inconsistent records).
-    - Flags domain contradictions instead of fabricating corrections.
-    - Explicitly separates implicit-unknown/none categories (A14, A65, A124).
-    - Groups rare purpose codes (< 3%) into `rare_other`.
-    - Creates pure-math `monthly_burden = credit_amount / duration` proxy for missing income.
-    - Applies domain-fixed discretization on `age` (`19_25`, `26_35`, `36_50`, `51_75`).
-    - Translates opaque Axx codes into readable business labels.
-    """
     out = df.copy()
 
     # 1. Domain contradiction flags (computed on raw codes before label translation)
@@ -103,8 +91,6 @@ def clean_static_rules(df: pd.DataFrame) -> pd.DataFrame:
 
 
 class StaticRuleCleaner(BaseEstimator, TransformerMixin):
-    """Sklearn transformer wrapper around deterministic clean_static_rules."""
-
     def fit(self, X: pd.DataFrame, y=None):
         return self
 
@@ -113,8 +99,6 @@ class StaticRuleCleaner(BaseEstimator, TransformerMixin):
 
 
 class PercentileClipLogTransformer(BaseEstimator, TransformerMixin):
-    """Leakage-free [p1, p99] winsorizer + optional log1p transform fit ONLY on training fold."""
-
     def __init__(
         self,
         cols: list[str] | None = None,
@@ -149,12 +133,6 @@ class PercentileClipLogTransformer(BaseEstimator, TransformerMixin):
 
 
 class QuantileFeatureBinner(BaseEstimator, TransformerMixin):
-    """Leakage-free equal-frequency (quantile) discretizer fit ONLY on training fold.
-
-    Converts skewed continuous features (`credit_amount`, `duration`, `monthly_burden`)
-    into readable quartile interval labels (`Q1_low`, `Q2_med_low`, `Q3_med_high`, `Q4_high`).
-    """
-
     def __init__(
         self,
         cols: list[str] | None = None,

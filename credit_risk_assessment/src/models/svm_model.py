@@ -1,5 +1,3 @@
-"""Model 2: Support Vector Machine (Linear and RBF kernels) with Platt probability calibration."""
-
 from sklearn.calibration import CalibratedClassifierCV
 from sklearn.pipeline import Pipeline
 from sklearn.svm import SVC
@@ -16,7 +14,6 @@ def build_svm(
     class_weight_mode: str = "cost_5_1",
     random_state: int = RANDOM_STATE,
 ) -> CalibratedClassifierCV:
-    """Create Platt-calibrated SVC (sklearn 1.9 recommended wrapper over SVC(probability=True))."""
     base_svc = SVC(
         kernel=kernel,
         C=C,
@@ -34,7 +31,6 @@ def build_svm_pipeline(
     C: float = 1.0,
     gamma: str | float = "scale",
 ) -> Pipeline:
-    """Combine scaled preprocessing pipeline with calibrated SVC."""
     return Pipeline(
         steps=[
             ("preprocess", build_preprocessor(mode=feature_mode, scale_numeric=True)),
@@ -52,7 +48,6 @@ def build_svm_pipeline(
 
 
 def get_svm_param_grid() -> list[dict]:
-    """Hyperparameter search space comparing RBF and Linear SVM kernels."""
     return [
         {
             "model__estimator__kernel": ["rbf"],
